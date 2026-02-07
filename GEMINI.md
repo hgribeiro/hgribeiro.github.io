@@ -11,7 +11,7 @@ This is a **code project** for a static website built with the **Hugo** static s
     *   **Hugo**: The core static site generator. The main configuration is in `config.yaml`.
     *   **Go Modules**: Used to manage Hugo dependencies, including the theme (`osprey-delight`) and other feature modules. Dependencies are defined in `go.mod`.
     *   **Sass/SCSS**: The project uses Sass for styling, as evidenced by the `assets/sass/` directory and the installation of Dart Sass in the build workflow.
-    *   **GitHub Actions**: A CI/CD pipeline defined in `.github/workflows/hugo.yaml` automates the building and deployment of the site to GitHub Pages.
+    *   **GitHub Actions**: A CI/CD pipeline defined in `.github/workflows/gh-pages.yml` automates the building and deployment of the site to GitHub Pages, using Hugo version `0.123.0`.
 
 *   **Architecture**: The project follows a standard Hugo directory structure. It imports a main theme and several other modules to provide features, demonstrating a modular architecture.
 
@@ -27,7 +27,7 @@ hugo server
 
 ### Production Build
 
-To generate the production-ready static files in the `public/` directory, use the following command. The build process from the GitHub Actions workflow can be replicated locally with:
+To generate the production-ready static files in the `public/` directory, use the following command. The build process from the GitHub Actions workflow uses:
 
 ```bash
 hugo --gc --minify
@@ -45,6 +45,6 @@ There are no dedicated test scripts. The primary validation is a successful `hug
     ```
     To add a new module, edit the `[module.imports]` section of `config.yaml` and run `hugo mod get`.
 
-*   **CI/CD**: All builds and deployments are automated via GitHub Actions. The workflow (`.github/workflows/hugo.yaml`) enforces **reproducible builds** by pinning exact versions of Hugo, Go, and Dart Sass.
+*   **CI/CD**: All builds and deployments are automated via GitHub Actions using the `.github/workflows/gh-pages.yml` workflow. This workflow uses official GitHub Actions (e.g., `actions/configure-pages`, `actions/upload-pages-artifact`, `actions/deploy-pages`), separating the process into `build` and `deploy` jobs. It explicitly installs Hugo CLI version `0.123.0` and Dart Sass.
 
 *   **Code Style**: No explicit style guide is present, but the codebase follows standard Hugo conventions. The use of `pygmentsUseClasses: true` suggests a preference for CSS-based syntax highlighting.
