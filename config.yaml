@@ -5,7 +5,7 @@ theme: "github.com/kdevo/osprey-delight"
 tags: ["hugo", "modules", "hugo-mods"]
 #canonifyURLS: true
 #googleAnalytics: ""
-disableKinds: ["taxonomy", "taxonomyTerm"]
+disableKinds: ["taxonomy"]
 enableEmoji: true
 pygmentsUseClasses: true
 
